@@ -37,6 +37,8 @@ var miliseconds;
 var seconds;
 var gametime
 
+let timeWarp = false;
+var timeWarpNum = 0;
 
 var Rock1X = false;
 var Rock1Y = false;
@@ -96,14 +98,18 @@ function setup() {
   rocks.option('3');
   rocks.option('5');
   rocks.option('10');
+  rocks.attribute('name', 'first')
   rocks.style('width', '125px');
   rocks.position(990, 130);
 
+
+ 
   timeWarp = createRadio();
   timeWarp.option('1');
   timeWarp.option('2');
   timeWarp.option('4');
   timeWarp.option('7');
+  timeWarp.attribute('name', 'second')
   timeWarp.style('width', '125px');
   timeWarp.position(990,185)
 
@@ -112,6 +118,7 @@ function setup() {
   puckDisapear.option('2');
   puckDisapear.option('4');
   puckDisapear.option('7');
+  puckDisapear.attribute('name', 'third')
   puckDisapear.style('width', '125px')
   puckDisapear.position(990,260)
 
@@ -138,6 +145,7 @@ text('Puck',985,250)
   let val = slider.value();
 let puckDisapearVal = puckDisapear.value();
 let rocksVal = rocks.value();
+//let timeWarpVal = timeWarp.selected();
 
   fill(255)
   textFont(fontSemiBold);
@@ -217,9 +225,9 @@ let rocksVal = rocks.value();
     changeDirectionX=false
   }
   if (PuckX>=0 && changeDirectionX == false){
-    PuckX=PuckX+val
+    PuckX=PuckX+val+timeWarpNum
   }else if(changeDirectionX == true){
-  PuckX=PuckX-val}
+  PuckX=PuckX-val-timeWarpNum}
 
   if(PuckY>675){
     changeDirectionY=true
@@ -227,16 +235,16 @@ let rocksVal = rocks.value();
     changeDirectionY=false
   }
   if (PuckY>=0 && changeDirectionY == false){
-    PuckY=PuckY+val
+    PuckY=PuckY+val+timeWarpNum
   }else if(changeDirectionY == true){
-    PuckY=PuckY-val
+    PuckY=PuckY-val+timeWarpNum
   }
    
   now = true;
 Timer() 
   
   if (nowTime == (puckDisapearVal * 58)){
-    console.log(puckDisapearVal)
+
 
     if (Hide) {
       Hide = false;
@@ -387,7 +395,6 @@ Rock1 = false
     Rock10 = false
 console.log("10 rocks")
  }
-
 
 
 
