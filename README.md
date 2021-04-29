@@ -49,7 +49,7 @@ Thanks to:
 *cmorgantywls for moving objects left and right- modified in the game for X and Y axis
 https://editor.p5js.org/cmorgantywls/sketches/HkdbRQnOG
 
-*ErraticGenerator for the code to spearte differnt radio buttons in DOM layers
+*ErraticGenerator for the code to separate differnt radio buttons in DOM layers
 https://discourse.processing.org/t/radio-buttons-multiple-possible/25068
 
 *Viv-Galinari for the code to move objects with a keypress
