@@ -22,6 +22,9 @@ Live server - Visual Studio Extention
 By: Ritwick Dey
 https://github.com/ritwickdey/vscode-live-server.git
 
+Font is Open Sans downloaded from google fonts
+https://fonts.google.com/specimen/Open+Sans
+
 Web hosting is through Github Pages
 
 The game can be found here: https://waarn.github.io/ITBCfinalProject/
