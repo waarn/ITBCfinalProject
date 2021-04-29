@@ -6,9 +6,13 @@ This is a version of pong with many different user-configurable challenges.
 ### Challenges
 Magic Rocks that will teleport the puck whenever it bounces off them
 
+Time warp the game will speed up and down 
+
 Disapearing Puck the puck will disapear for a set ammount of time
 
-Time warp the game will speed up and down 
+Fake pucks identical moving pucks will be added to the game
+
+Direction changing the puck will randomly change its direction
 
 ## Tools Used
 
@@ -36,7 +40,7 @@ Want to make changes to the game? Download the files in this repository and edit
 Note: For editing and development on this game a http server is required.
 
 ## Problems with the game?
-Submit issues on the issues tab at the top of this page.
+Eamil 2025arnwila@share.wilsonsd.org
 
 ## Acknowledgments
 
