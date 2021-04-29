@@ -4,8 +4,10 @@ This is a version of pong with many different user-configurable challenges.
 
 
 ### Challenges
-Rocks that will apear in the game to bounce the puck around
+Magic Rocks that will teleport the puck whenever it bounces off them
+
 Disapearing Puck the puck will disapear for a set ammount of time
+
 Time warp the game will speed up and down 
 
 ## Tools Used
