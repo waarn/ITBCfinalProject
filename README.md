@@ -29,6 +29,8 @@ The game can be found here: https://waarn.github.io/ITBCfinalProject/
 Want to make changes to the game? Download the files in this repository and edit the Sketch.js
 Note: For editing and development on this game a http server is required.
 
+## Problems with the game?
+Submit issues on the issues tab at the top of this page.
 
 ## Acknowledgments
 
