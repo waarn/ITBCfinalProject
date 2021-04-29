@@ -1,6 +1,6 @@
 # ITBCfinalProject
 
-This is a version of pong with many differnt user-configurable challenges.
+This is a version of pong with many different user-configurable challenges.
 
 
 ### Challenges
