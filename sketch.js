@@ -8,7 +8,7 @@
 *http://www.apache.org/licenses/
 *
 */
-var PuckX = 200;
+var puckX = 200;
 var PuckY = 200;
 var PuckY1;
 let Hide = false;
@@ -98,11 +98,16 @@ let Rock3 =  true;
 let Rock5 =  true;
 let Rock10 =  true;
 
+var changeDirectionTime = 100;
+
 var now = false;
 var nowTime = 0;
 
 var now1 = false;
 var nowTime1 = 0;
+
+var now2 = false;
+var nowTime2 = 0;
 
 let Warptime = false
 var warptimenum = 0;
@@ -168,6 +173,13 @@ function setup() {
   multiPuck.style('width', '125px')
   multiPuck.position(990,308)
 
+  changeDirectionChallenge = createRadio();
+  changeDirectionChallenge.option('1','On');
+  changeDirectionChallenge.option('0','Off')
+  changeDirectionChallenge.attribute('name', 'fifth')
+  changeDirectionChallenge.style('width', '125px')
+  changeDirectionChallenge.position(990,380)
+
 } 
 
 function draw() {
@@ -192,12 +204,20 @@ function draw() {
   text('Check this project out on Github to learn more about it.', 50 , 740)
   let githubLink = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
   githubLink.position(475, 725);
+  text('Made By: William Arnholt 2021',900,740)
+  fill(0)
+  textSize(20)
+  textFont(fontSemiBold)
+  text('Direction',985,350)
+  text('Changing',985,375)
+
 
   let val = slider.value();
   let puckDisapearVal = puckDisapear.value();
   let rocksVal = rocks.value();
   let timeWarpVal = Warp.value();
   let multiPuckVal = multiPuck.value();
+  let changeDirectionChallengeVal = changeDirectionChallenge.value();
 
   fill(255)
   textFont(fontSemiBold);
@@ -231,7 +251,7 @@ function draw() {
   if(Hide == false){
     
     fill(0);
-    ellipse(PuckX, PuckY, 50, 50);
+    ellipse(puckX, PuckY, 50, 50);
   
   }
 
@@ -273,7 +293,7 @@ function draw() {
   miliseconds = millis();
   seconds = miliseconds / 1000;
 
-  if (PuckX > 900){
+  if (puckX > 900){
 
     Start = 2;
 
@@ -298,15 +318,15 @@ function draw() {
     }else {
       PuckY1 = 925;
     }
-    if(PuckX>PuckY1){
+    if(puckX>PuckY1){
       changeDirectionX=true
-    }else if (PuckX<=135){
+    }else if (puckX<=135){
       changeDirectionX=false
     }
-    if (PuckX>=0 && changeDirectionX == false){
-      PuckX=PuckX+val+warptimenum
+    if (puckX>=0 && changeDirectionX == false){
+      puckX=puckX+val+warptimenum
     }else if(changeDirectionX == true){
-      PuckX=PuckX-val-warptimenum
+      puckX=puckX-val-warptimenum
     }
     if(PuckY>675){
       changeDirectionY=true
@@ -482,6 +502,26 @@ function draw() {
     warptimenum = 0
   }
 
+  now2 = true;
+  Timer2() 
+  
+  if (nowTime2 == changeDirectionTime){
+  if (changeDirectionChallengeVal == 1){
+  }
+    changeDirectionTime = round(random(0,500))
+  if (changeDirectionX) {
+    changeDirectionX  = false;
+  } else {
+    changeDirectionX = true;
+  } 
+  if (changeDirectionY) {
+    changeDirectionY = false;
+  } else {
+    changeDirectionY = true;
+  } 
+  nowTime2 = 0;
+  }
+
  if (rocksVal == 1){
    if(Rock1 == true){
       Rock1X = random(120,800)
@@ -490,10 +530,10 @@ function draw() {
       Rock1Y = round(Rock1Y)
    }
 
-    var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
+    var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
 
     if (Rock1D < 50){
-      PuckX = PuckX + round(random(15,45))
+      puckX = puckX + round(random(15,45))
     } 
   
     fill(95,158,160)
@@ -517,18 +557,18 @@ function draw() {
         Rock3Y = round(Rock3Y)
       }
 
-      var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
-      var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
-      var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
+      var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
+      var Rock2D = int(dist(Rock2X,Rock2Y,puckX,PuckY));
+      var Rock3D = int(dist(Rock3X,Rock3Y,puckX,PuckY));
 
       if (Rock1D < 50){
-       PuckX = PuckX + round(random(15,45))
+       puckX = puckX + round(random(15,45))
       }
       if (Rock2D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock3D < 50){
-         PuckX = PuckX + round(random(15,45))
+         puckX = puckX + round(random(15,45))
       }
 
       fill(95,158,160)
@@ -564,26 +604,26 @@ function draw() {
         Rock5Y = round(Rock5Y)
       }
     
-      var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
-      var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
-      var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
-      var Rock4D = int(dist(Rock4X,Rock4Y,PuckX,PuckY));
-      var Rock5D = int(dist(Rock5X,Rock5Y,PuckX,PuckY));
+      var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
+      var Rock2D = int(dist(Rock2X,Rock2Y,puckX,PuckY));
+      var Rock3D = int(dist(Rock3X,Rock3Y,puckX,PuckY));
+      var Rock4D = int(dist(Rock4X,Rock4Y,puckX,PuckY));
+      var Rock5D = int(dist(Rock5X,Rock5Y,puckX,PuckY));
 
       if (Rock1D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock2D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock3D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock4D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock5D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
 
       fill(95,158,160)
@@ -646,47 +686,47 @@ function draw() {
         Rock10Y = round(Rock10Y)
       }
    
-      var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
-      var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
-      var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
-      var Rock4D = int(dist(Rock4X,Rock4Y,PuckX,PuckY));
-      var Rock5D = int(dist(Rock5X,Rock5Y,PuckX,PuckY));
-      var Rock6D = int(dist(Rock6X,Rock6Y,PuckX,PuckY));
-      var Rock7D = int(dist(Rock7X,Rock7Y,PuckX,PuckY));
-      var Rock8D = int(dist(Rock8X,Rock8Y,PuckX,PuckY));
-      var Rock9D = int(dist(Rock9X,Rock9Y,PuckX,PuckY));
-      var Rock10D = int(dist(Rock10X,Rock10Y,PuckX,PuckY));
+      var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
+      var Rock2D = int(dist(Rock2X,Rock2Y,puckX,PuckY));
+      var Rock3D = int(dist(Rock3X,Rock3Y,puckX,PuckY));
+      var Rock4D = int(dist(Rock4X,Rock4Y,puckX,PuckY));
+      var Rock5D = int(dist(Rock5X,Rock5Y,puckX,PuckY));
+      var Rock6D = int(dist(Rock6X,Rock6Y,puckX,PuckY));
+      var Rock7D = int(dist(Rock7X,Rock7Y,puckX,PuckY));
+      var Rock8D = int(dist(Rock8X,Rock8Y,puckX,PuckY));
+      var Rock9D = int(dist(Rock9X,Rock9Y,puckX,PuckY));
+      var Rock10D = int(dist(Rock10X,Rock10Y,puckX,PuckY));
 
       if (Rock1D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock2D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock3D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock4D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock5D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
          
       if (Rock6D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock7D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock8D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock9D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
       if (Rock10D < 50){
-        PuckX = PuckX + round(random(15,45))
+        puckX = puckX + round(random(15,45))
       }
 
       fill(95,158,160)
@@ -701,7 +741,6 @@ function draw() {
       ellipse(Rock9X,Rock9Y,50,50)
       ellipse(Rock10X,Rock10Y,50,50)
       Rock10 = false
-      console.log("10 rocks")
     }
 
   }else if (Start == 2){
@@ -744,6 +783,13 @@ function Timer1(){
   if(now1 == true){
   nowTime1 = nowTime1 + 1;
   now1 = false;
+  }
+}
+
+function Timer2(){
+  if(now2 == true){
+  nowTime2 = nowTime2 + 1;
+  now2 = false;
   }
 }
 
