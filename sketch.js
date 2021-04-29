@@ -37,27 +37,36 @@ var miliseconds;
 var seconds;
 var gametime
 
-let timeWarp = false;
-var timeWarpNum = 0;
 
-var Rock1X = false;
-var Rock1Y = false;
-var Rock2X = false;
-var Rock3Y = false;
-var Rock4X = false;
-var Rock4Y = false;
-var Rock5X = false;
-var Rock5Y = false;
-var Rock6X = false;
-var Rock6Y = false;
-var Rock7X = false;
-var Rock7Y = false;
-var Rock8X = false;
-var Rock8Y = false;
-var Rock9X = false;
-var Rock9Y = false;
-var Rock10X = false;
-var Rock10Y = false;
+var Rock1X 
+var Rock1Y 
+var Rock2X;
+var Rock3Y;
+var Rock4X;
+var Rock4Y;
+var Rock5X;
+var Rock5Y;
+var Rock6X;
+var Rock6Y;
+var Rock7X;
+var Rock7Y;
+var Rock8X;
+var Rock8Y;
+var Rock9X;
+var Rock9Y;
+var Rock10X;
+var Rock10Y;
+
+var Rock1D
+var Rock2D;
+var Rock3D;
+var Rock4D;
+var Rock5D;
+var Rock6D;
+var Rock7D;
+var Rock8D;
+var Rock9D;
+var Rock10D;
 
 
 let Rock1 =  true;
@@ -68,6 +77,12 @@ let Rock10 =  true;
 
 var now = false;
 var nowTime = 0;
+
+var now1 = false;
+var nowTime1 = 0;
+
+let Warptime = false
+var warptimenum = 0;
 
 let i = 0;
 
@@ -104,14 +119,14 @@ function setup() {
 
 
  
-  timeWarp = createRadio();
-  timeWarp.option('1');
-  timeWarp.option('2');
-  timeWarp.option('4');
-  timeWarp.option('7');
-  timeWarp.attribute('name', 'second')
-  timeWarp.style('width', '125px');
-  timeWarp.position(990,185)
+  Warp = createRadio();
+  Warp.option('1');
+  Warp.option('2');
+  Warp.option('4');
+  Warp.option('7');
+  Warp.attribute('name', 'second')
+  Warp.style('width', '125px');
+  Warp.position(990,185)
 
   puckDisapear = createRadio();
   puckDisapear.option('1');
@@ -135,7 +150,7 @@ textSize(28)
 textFont(fontSemiBold)
 text('Challenges', 980,75)
 textSize(20)
-text('Rocks',985,120)
+text('Magic Rocks',985,120)
 text('Time Warp', 985, 175)
 text('Disapering', 985, 225)
 text('Puck',985,250)
@@ -145,7 +160,8 @@ text('Puck',985,250)
   let val = slider.value();
 let puckDisapearVal = puckDisapear.value();
 let rocksVal = rocks.value();
-//let timeWarpVal = timeWarp.selected();
+let timeWarpVal = Warp.value();
+
 
   fill(255)
   textFont(fontSemiBold);
@@ -211,8 +227,8 @@ let rocksVal = rocks.value();
       PuckAngle = round(PuckAngle);
     }
 
-  HitMax = PlayerPuckY + 25;
-  HitMin = PlayerPuckY - 25;
+  HitMax = PlayerPuckY + 35;
+  HitMin = PlayerPuckY - 35;
 
   if (PuckY > HitMin && PuckY < HitMax){
     PuckY1 = 868
@@ -225,26 +241,25 @@ let rocksVal = rocks.value();
     changeDirectionX=false
   }
   if (PuckX>=0 && changeDirectionX == false){
-    PuckX=PuckX+val+timeWarpNum
+    PuckX=PuckX+val+warptimenum
   }else if(changeDirectionX == true){
-  PuckX=PuckX-val-timeWarpNum}
-
+  PuckX=PuckX-val-warptimenum
+}
   if(PuckY>675){
     changeDirectionY=true
   }else if (PuckY<=85){
     changeDirectionY=false
   }
   if (PuckY>=0 && changeDirectionY == false){
-    PuckY=PuckY+val+timeWarpNum
+    PuckY=PuckY+val+warptimenum
   }else if(changeDirectionY == true){
-    PuckY=PuckY-val+timeWarpNum
+    PuckY=PuckY-val-warptimenum
   }
    
   now = true;
 Timer() 
   
   if (nowTime == (puckDisapearVal * 58)){
-
 
     if (Hide) {
       Hide = false;
@@ -254,35 +269,83 @@ Timer()
     nowTime = 0 
   }
 
+  now1 = true;
+Timer1() 
+  if (nowTime1 == (timeWarpVal * 58)){
+    console.log("hello")
+
+    if (Warptime) {
+      Warptime = false;
+    } else {
+      Warptime = true;
+    }
+    nowTime = 0 
+  console.log(Warptime)
+ nowTime1 = 0
+  }
+
+  if (Warptime == true){
+
+    warptimenum = random(0,8)
+    warptimenum = round(warptimenum)
+  }else (
+    warptimenum = 0
+  
+    )
+
+
+
+
 
  if (rocksVal == 1){
    if(Rock1 == true){
-Rock1X = random(100,800)
+Rock1X = random(120,800)
 Rock1X = round(Rock1X)
-Rock1Y = random(100,690)
+Rock1Y = random(120,690)
 Rock1Y = round(Rock1Y)
    }
+   var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
+
+if (Rock1D < 50){
+  PuckX = PuckX + round(random(15,45))
+}
+  
 
    fill(95,158,160)
 ellipse(Rock1X,Rock1Y,50,50)
 Rock1 = false
  }else if (rocksVal == 3){
   if(Rock3 == true){
-    Rock1X = random(100,800)
+    Rock1X = random(120,800)
     Rock1X = round(Rock1X)
-    Rock1Y = random(100,690)
+    Rock1Y = random(120,690)
     Rock1Y = round(Rock1Y)
 
-    Rock2X = random(100,800)
+    Rock2X = random(120,800)
     Rock2X = round(Rock2X)
-    Rock2Y = random(100,690)
+    Rock2Y = random(120,690)
     Rock2Y = round(Rock2Y)
 
-   Rock3X = random(100,800)
+   Rock3X = random(120,800)
    Rock3X = round(Rock3X)
-   Rock3Y = random(100,690)
+   Rock3Y = random(120,690)
    Rock3Y = round(Rock3Y)
        }
+
+       var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
+       var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
+       var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
+
+
+       if (Rock1D < 50){
+       PuckX = PuckX + round(random(15,45))
+       }
+       if (Rock2D < 50){
+        PuckX = PuckX + round(random(15,45))
+        }
+        if (Rock3D < 50){
+          PuckX = PuckX + round(random(15,45))
+          }
 
     //console.log("X" + Rock2X + "Y" + Rock2Y)
     fill(95,158,160)
@@ -293,32 +356,56 @@ Rock1 = false
 //wall sit ups
  }else if (rocksVal == 5){
   if(Rock5 == true){
-    Rock1X = random(100,800)
+    Rock1X = random(120,800)
     Rock1X = round(Rock1X)
-    Rock1Y = random(100,690)
+    Rock1Y = random(120,690)
     Rock1Y = round(Rock1Y)
 
-    Rock2X = random(100,800)
+    Rock2X = random(120,800)
     Rock2X = round(Rock2X)
-    Rock2Y = random(100,690)
+    Rock2Y = random(120,690)
     Rock2Y = round(Rock2Y)
 
-   Rock3X = random(100,800)
+   Rock3X = random(120,800)
    Rock3X = round(Rock3X)
-   Rock3Y = random(100,690)
+   Rock3Y = random(120,690)
    Rock3Y = round(Rock3Y)
 
-   Rock4X = random(100,800)
+   Rock4X = random(120,800)
    Rock4X = round(Rock4X)
-   Rock4Y = random(100,690)
+   Rock4Y = random(120,690)
    Rock4Y = round(Rock4Y)
 
-   Rock5X = random(100,800)
+   Rock5X = random(120,800)
    Rock5X = round(Rock5X)
-   Rock5Y = random(100,690)
+   Rock5Y = random(120,690)
    Rock5Y = round(Rock5Y)
        }
     
+       var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
+       var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
+       var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
+       var Rock4D = int(dist(Rock4X,Rock4Y,PuckX,PuckY));
+       var Rock5D = int(dist(Rock5X,Rock5Y,PuckX,PuckY));
+
+
+       if (Rock1D < 50){
+       PuckX = PuckX + round(random(15,45))
+       }
+       if (Rock2D < 50){
+        PuckX = PuckX + round(random(15,45))
+        }
+        if (Rock3D < 50){
+          PuckX = PuckX + round(random(15,45))
+          }
+          if (Rock4D < 50){
+            PuckX = PuckX + round(random(15,45))
+            }
+            if (Rock5D < 50){
+              PuckX = PuckX + round(random(15,45))
+              }
+
+
     //console.log("X" + Rock2X + "Y" + Rock2Y)
     fill(95,158,160)
     ellipse(Rock1X,Rock1Y,50,50)
@@ -329,57 +416,103 @@ Rock1 = false
     Rock5 = false
  }else if(rocksVal == 10){
   if(Rock10 == true){
-    Rock1X = random(100,800)
+    Rock1X = random(120,800)
     Rock1X = round(Rock1X)
-    Rock1Y = random(100,690)
+    Rock1Y = random(120,690)
     Rock1Y = round(Rock1Y)
 
-    Rock2X = random(100,800)
+    Rock2X = random(120,800)
     Rock2X = round(Rock2X)
-    Rock2Y = random(100,690)
+    Rock2Y = random(120,690)
     Rock2Y = round(Rock2Y)
 
-   Rock3X = random(100,800)
+   Rock3X = random(120,800)
    Rock3X = round(Rock3X)
-   Rock3Y = random(100,690)
+   Rock3Y = random(120,690)
    Rock3Y = round(Rock3Y)
 
-   Rock4X = random(100,800)
+   Rock4X = random(120,800)
    Rock4X = round(Rock4X)
-   Rock4Y = random(100,690)
+   Rock4Y = random(120,690)
    Rock4Y = round(Rock4Y)
 
-   Rock5X = random(100,800)
+   Rock5X = random(120,800)
    Rock5X = round(Rock5X)
-   Rock5Y = random(100,690)
+   Rock5Y = random(120,690)
    Rock5Y = round(Rock5Y)
   
-   Rock6X = random(100,800)
+   Rock6X = random(120,800)
    Rock6X = round(Rock6X)
-   Rock6Y = random(100,690)
+   Rock6Y = random(120,690)
    Rock6Y = round(Rock6Y)
 
-   Rock7X = random(100,800)
+   Rock7X = random(120,800)
    Rock7X = round(Rock7X)
-   Rock7Y = random(100,690)
+   Rock7Y = random(120,690)
    Rock7Y = round(Rock7Y)
 
-  Rock8X = random(100,800)
+  Rock8X = random(120,800)
   Rock8X = round(Rock8X)
-  Rock8Y = random(100,690)
+  Rock8Y = random(120,690)
   Rock8Y = round(Rock8Y)
 
-  Rock9X = random(100,800)
+  Rock9X = random(120,800)
   Rock9X = round(Rock9X)
-  Rock9Y = random(100,690)
+  Rock9Y = random(120,690)
   Rock9Y = round(Rock9Y)
 
-  Rock10X = random(100,800)
+  Rock10X = random(120,800)
   Rock10X = round(Rock10X)
-  Rock10Y = random(100,690)
+  Rock10Y = random(120,690)
   Rock10Y = round(Rock10Y)
   }
     
+
+  var Rock1D = int(dist(Rock1X,Rock1Y,PuckX,PuckY));
+  var Rock2D = int(dist(Rock2X,Rock2Y,PuckX,PuckY));
+  var Rock3D = int(dist(Rock3X,Rock3Y,PuckX,PuckY));
+  var Rock4D = int(dist(Rock4X,Rock4Y,PuckX,PuckY));
+  var Rock5D = int(dist(Rock5X,Rock5Y,PuckX,PuckY));
+  var Rock6D = int(dist(Rock6X,Rock6Y,PuckX,PuckY));
+  var Rock7D = int(dist(Rock7X,Rock7Y,PuckX,PuckY));
+  var Rock8D = int(dist(Rock8X,Rock8Y,PuckX,PuckY));
+  var Rock9D = int(dist(Rock9X,Rock9Y,PuckX,PuckY));
+  var Rock10D = int(dist(Rock10X,Rock10Y,PuckX,PuckY));
+
+
+  if (Rock1D < 50){
+  PuckX = PuckX + round(random(15,45))
+  }
+  if (Rock2D < 50){
+   PuckX = PuckX + round(random(15,45))
+   }
+   if (Rock3D < 50){
+     PuckX = PuckX + round(random(15,45))
+     }
+     if (Rock4D < 50){
+       PuckX = PuckX + round(random(15,45))
+       }
+       if (Rock5D < 50){
+         PuckX = PuckX + round(random(15,45))
+         }
+         
+  if (Rock6D < 50){
+    PuckX = PuckX + round(random(15,45))
+    }
+    if (Rock7D < 50){
+     PuckX = PuckX + round(random(15,45))
+     }
+     if (Rock8D < 50){
+       PuckX = PuckX + round(random(15,45))
+       }
+       if (Rock9D < 50){
+         PuckX = PuckX + round(random(15,45))
+         }
+         if (Rock10D < 50){
+           PuckX = PuckX + round(random(15,45))
+           }
+
+
     //console.log("X" + Rock2X + "Y" + Rock2Y)
     fill(95,158,160)
     ellipse(Rock1X,Rock1Y,50,50)
@@ -434,6 +567,13 @@ function Timer(){
   if(now == true){
   nowTime = nowTime + 1;
   now = false;
+  }
+}
+
+function Timer1(){
+  if(now1 == true){
+  nowTime1 = nowTime1 + 1;
+  now1 = false;
   }
 }
 
