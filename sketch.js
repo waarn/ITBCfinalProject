@@ -201,10 +201,9 @@ function draw() {
   textSize(16)
   fill(255)
   textFont(fontRegular)
-  text('Check this project out on Github to learn more about it.', 50 , 740)
+  text('Check this project out on Github to learn more about it, and instructions on how to play.', 50 , 740)
   let githubLink = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
-  githubLink.position(475, 725);
-  text('Made By: William Arnholt 2021',900,740)
+  githubLink.position(710, 725);
   fill(0)
   textSize(20)
   textFont(fontSemiBold)
@@ -507,7 +506,7 @@ function draw() {
   
   if (nowTime2 == changeDirectionTime){
   if (changeDirectionChallengeVal == 1){
-  }
+  
     changeDirectionTime = round(random(0,500))
   if (changeDirectionX) {
     changeDirectionX  = false;
@@ -520,6 +519,7 @@ function draw() {
     changeDirectionY = true;
   } 
   nowTime2 = 0;
+  }
   }
 
  if (rocksVal == 1){
