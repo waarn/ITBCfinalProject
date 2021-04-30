@@ -48,7 +48,7 @@ Want to make changes to the game? Download the files in this repository and edit
 Note: For editing and development on this game a http server is required.
 
 ## Problems with the game?
-Eamil 2025arnwila@share.wilsonsd.org
+Email 2025arnwila@share.wilsonsd.org
 
 ## Acknowledgments
 
