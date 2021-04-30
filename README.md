@@ -20,7 +20,7 @@ Direction changing the puck will randomly change its direction
 2. Press Enter of click the start button to begin the game
 3. Use the Up and Down arrows to move the right side puck Up and Down
 
-*Is the game running slow turn up the slider on the top to increase the speed.
+*Is the game running slow? Turn up the slider on the top to increase the speed.
 
 ## Tools Used
 
