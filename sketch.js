@@ -116,6 +116,8 @@ let i = 0;
 
 let fontRegular, fontBold, fontSemiBold;
 
+let input, button;
+
 
 function preload() {
 
@@ -180,6 +182,15 @@ function setup() {
   changeDirectionChallenge.style('width', '125px')
   changeDirectionChallenge.position(990,380)
 
+  input = createInput();
+  input.position(980, 650);
+  input.size(144);
+  input.attribute('name', 'sixth')
+  button = createButton('Create Challenges');
+  button.position(993, 670);
+  button.mousePressed(challengeInput);
+  button.attribute('name', 'sixth')
+
 } 
 
 function draw() {
@@ -209,6 +220,8 @@ function draw() {
   textFont(fontSemiBold)
   text('Direction',985,350)
   text('Changing',985,375)
+  let challengeCode = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
+  challengeCode.position(710, 725);
 
 
   let val = slider.value();
@@ -802,3 +815,16 @@ function mouseClicked() {
     location.reload();
   }
  }
+
+ function challengeInput() {
+const name = input.value();
+let splitString = split(name, ',');
+console.log(splitString[1])
+  input.value('');
+rocks.selected(splitString[0])
+Warp.selected(splitString[1])
+puckDisapear.selected(splitString[2])
+multiPuck.selected(splitString[3])
+changeDirectionChallenge.selected(splitString[4])
+
+}
