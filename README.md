@@ -3,7 +3,7 @@
 This is a version of pong with many different user-configurable challenges.
 
 
-### Challenges
+## Challenges
 Magic Rocks that will teleport the puck whenever it bounces off them
 
 Time warp the game will speed up and down 
@@ -13,6 +13,14 @@ Disapearing Puck the puck will disapear for a set ammount of time
 Fake pucks identical moving pucks will be added to the game
 
 Direction changing the puck will randomly change its direction
+
+## How to play
+
+1. Using the radio buttons on the right side of the screen select what challenges you want.
+2. Press Enter of click the start button to begin the game
+3. Use the Up and Down arrows to move the right side puck Up and Down
+
+*Is the game running slow turn up the slider on the top to increase the speed.
 
 ## Tools Used
 
@@ -33,7 +41,7 @@ Web hosting is through Github Pages
 
 The game can be found here: https://waarn.github.io/ITBCfinalProject/
 
-### Development
+## Development
 
 Want to make changes to the game? Download the files in this repository and edit the Sketch.js
 
