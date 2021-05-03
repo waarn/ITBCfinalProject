@@ -10,7 +10,7 @@
 */
 var puckX = 200;
 var PuckY = 200;
-var PuckY1;
+var PuckY1 = 200;
 let Hide = false;
 
 let fakePuck1 = false
@@ -125,6 +125,7 @@ function preload() {
   fontSemiBold = loadFont('addons/Open_Sans/OpenSans-SemiBold.ttf');
   fontBold = loadFont('addons/Open_Sans/OpenSans-Bold.ttf');
 
+
 }
 
 
@@ -181,6 +182,7 @@ function setup() {
   changeDirectionChallenge.attribute('name', 'fifth')
   changeDirectionChallenge.style('width', '125px')
   changeDirectionChallenge.position(990,380)
+  changeDirectionChallenge.selected('0')
 
   input = createInput();
   input.position(980, 650);
@@ -222,14 +224,16 @@ function draw() {
   text('Changing',985,375)
   let challengeCode = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
   challengeCode.position(710, 725);
-
-
+ 
   let val = slider.value();
   let puckDisapearVal = puckDisapear.value();
   let rocksVal = rocks.value();
   let timeWarpVal = Warp.value();
   let multiPuckVal = multiPuck.value();
   let changeDirectionChallengeVal = changeDirectionChallenge.value();
+  
+  text('Code: ' + rocksVal + ',' + timeWarpVal + ',' + puckDisapearVal + ',' + multiPuckVal + ',' + changeDirectionChallengeVal,985,645)
+
 
   fill(255)
   textFont(fontSemiBold);

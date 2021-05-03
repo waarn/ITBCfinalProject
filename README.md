@@ -20,7 +20,13 @@ Direction changing the puck will randomly change its direction
 2. Press Enter of click the start button to begin the game
 3. Use the Up and Down arrows to move the right side puck Up and Down
 
-*Is the game running slow? Turn up the slider on the top to increase the speed.
+## Commom Problems
+
+Code is not working -  Make sure you only write the numbers not the words 'Coce: '
+
+The whole game cannot fit on the screen - Use CTRL + or - to zoom in and out
+
+The game is running slow - Turn up the slider on the top to increase the speed.
 
 ## Tools Used
 
