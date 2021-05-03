@@ -17,8 +17,10 @@ Direction changing the puck will randomly change its direction
 ## How to play
 
 1. Using the radio buttons on the right side of the screen select what challenges you want.
-2. Press Enter of click the start button to begin the game
-3. Use the Up and Down arrows to move the right side puck Up and Down
+2. Copy the code above the text box to save your challenges.
+4. Press Enter of click the start button to begin the game
+5. Use the Up and Down arrows to move the right side puck Up and Down
+6. After you miss and hit try again paste the code into the text box.
 
 ## Commom Problems
 
