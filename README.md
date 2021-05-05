@@ -5,17 +5,17 @@ This is a version of pong with many different user-configurable challenges.
 Explination of the code can be found at: 
 https://waarn.github.io/ITBCfinalProject/docs/docs.html
 
-##Jump to a certain section:
+## Jump to a certain section:
 
-###Moving the Puck
+### Moving the Puck
 https://waarn.github.io/ITBCfinalProject/docs/docs.html#movingPuck
-###Moving the Player's Piece
+### Moving the Player's Piece
 https://waarn.github.io/ITBCfinalProject/docs/docs.html#movingPlayer
-###Making Rocks
+### Making Rocks
 https://waarn.github.io/ITBCfinalProject/docs/docs.html#rocks
-###Making the Fake Pucks
+### Making the Fake Pucks
 https://waarn.github.io/ITBCfinalProject/docs/docs.html#fakePucks
-###Design of the Game
+### Design of the Game
 https://waarn.github.io/ITBCfinalProject/docs/docs.html#design
 
 ## Challenges
