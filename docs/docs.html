@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>William's Final Project - Doccumentation</title>
+<link rel="alternate" type="application/rss+xml" title="egrappler.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body data-post="http://www.egrappler.com/free-product-documentation-template/" style="margin-top:45px">
+<nav>
+  <div class="container">
+    <h1>William's Final Project</h1>
+    <div id="menu">
+      <ul class="toplinks">
+        <li><a href="https://waarn.github.io/ITBCfinalProject/">Play The Game</a></li>
+        <li><a href="https://github.com/waarn/ITBCfinalProject">Github Repo</a></li>
+      </ul>
+    </div>
+    <a id="menu-toggle" href="#" class=" ">&#9776;</a> </div>
+</nav>
+<section>
+  <div class="container">
+    <ul class="docs-nav" id="menu-left">
+      <li><strong>Code Explanations</strong></li>
+      <li><a href="#movingPuck" class=" ">Moving the Puck</a></li>
+      <li><a href="#movingPlayer" class=" ">Moving the Player's Piece</a></li>
+      <li><a href="#rocks" class=" ">Making Rocks</a></li>
+      <li><a href="#fakePucks" class=" ">Making the Fake Pucks</a></li>
+      <li><a href="#design" class=" ">Design of the Game</a></li>
+    </ul>
+    <div class="docs-content">
+      <h2>Code Explanations</h2>
+      <p>The code for this project is viewable on Github, This is just a explanation of the key parts that make the game work. The only code I had to write was
+      Sketch.js. The other files are for the java script Libary I used called P5JS.
+      </p>
+      </ul>
+      <h3 id="movingPuck">Moving the puck.</h3>
+      <ul>
+        <li><h4>Part 1</h4></li>
+        <p>This can be found on line 267 of Sketch.js</p>
+        <p>The first part of moving the puck is to check to see if the puck is visible, If so then we should draw it on the screen with 
+          a way to control its position that is why there are the varibles puckX and PuckY.
+        </p>
+      </ul>
+     
+      <pre class="prettyprint">
+          if(Hide == false){
+    
+          fill(0);
+          ellipse(puckX, PuckY, 50, 50);
+        
+        }
+         </pre>
+      <ul>
+        <li><h4>Part 2</h4></li>
+        <p>This can be found on line 329 of Sketch.js</p>
+        <p>The next part of moving it is to cha ge its position in both the X and Y axis with a way to make it change change direction
+          that is the job of this code. It also has to tell when the player is within range of the puck to hit it. Added to the X and Y of the puck are the values of the
+          speed slider and another varible for the Time Warp challenge.
+        </p>
+      </ul>
+      <pre class="prettyprint">
+        HitMax = PlayerPuckY + 35;
+        HitMin = PlayerPuckY - 35;
+    
+        if (PuckY > HitMin && PuckY < HitMax){
+          PuckY1 = 868
+        }else {
+          PuckY1 = 925;
+        }
+        if(puckX>PuckY1){
+          changeDirectionX=true
+        }else if (puckX<=135){
+          changeDirectionX=false
+        }
+        if (puckX>=0 && changeDirectionX == false){
+          puckX=puckX+val+warptimenum
+        }else if(changeDirectionX == true){
+          puckX=puckX-val-warptimenum
+        }
+        if(PuckY>675){
+          changeDirectionY=true
+        }else if (PuckY<=85){
+          changeDirectionY=false
+        }
+        if (PuckY>=0 && changeDirectionY == false){
+          PuckY=PuckY+val+warptimenum
+        }else if(changeDirectionY == true){
+          PuckY=PuckY-val-warptimenum
+        }
+      </pre>
+
+      <h3 id="movingPlayer">Moving the Player's Piece</h3>
+      <ul>
+        <p>This can be found on line 779 of Sketch.js</p>
+          <p>In p5 whenever a key is pressed it triggers a varible to be true and have the value of the key. This code 
+            moves the player's piece acording to which key is pressed. 
+          </p>
+      </ul>
+      <pre class="prettyprint">
+        if (keyIsPressed) {
+          if (keyCode == UP_ARROW && PlayerPuckY > 85) {
+           PlayerPuckY -= 10; 
+         } else if (keyCode == DOWN_ARROW && PlayerPuckY < 675) {
+           PlayerPuckY +=10; 
+         }else if (keyCode == ENTER){
+          Start = 1;
+          gametime = round(seconds);
+         }
+        }  
+      </pre>
+      <h3 id="rocks">Making the Rocks</h3>
+      <p>This can be found starting on line 542 of Sketch.js</p>
+      <p>The value of the radio buttons is read and then then the location of the rocks is randomly determined
+      </p>
+      <ul>
+        <li><h4>1 Rock</h4></li>
+      </ul>
+      <pre class="prettyprint">
+        if (rocksVal == 1){
+          if(Rock1 == true){
+             Rock1X = random(120,800)
+             Rock1X = round(Rock1X)
+             Rock1Y = random(120,690)
+             Rock1Y = round(Rock1Y)
+          }
+       
+           var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
+       
+           if (Rock1D < 50){
+             puckX = puckX + round(random(15,45))
+           } 
+         
+           fill(95,158,160)
+           ellipse(Rock1X,Rock1Y,50,50)
+           Rock1 = false
+           
+      </pre>
+      <ul>
+        <li><h4>3 Rocks</h4></li>
+      </ul>
+      <pre class="prettyprint">
+      }else if (rocksVal == 3){
+          if(Rock3 == true){
+            Rock1X = random(120,800)
+            Rock1X = round(Rock1X)
+            Rock1Y = random(120,690)
+            Rock1Y = round(Rock1Y)
+    
+            Rock2X = random(120,800)
+            Rock2X = round(Rock2X)
+            Rock2Y = random(120,690)
+            Rock2Y = round(Rock2Y)
+    
+            Rock3X = random(120,800)
+            Rock3X = round(Rock3X)
+            Rock3Y = random(120,690)
+            Rock3Y = round(Rock3Y)
+          }
+    
+          var Rock1D = int(dist(Rock1X,Rock1Y,puckX,PuckY));
+          var Rock2D = int(dist(Rock2X,Rock2Y,puckX,PuckY));
+          var Rock3D = int(dist(Rock3X,Rock3Y,puckX,PuckY));
+    
+          if (Rock1D < 50){
+           puckX = puckX + round(random(15,45))
+          }
+          if (Rock2D < 50){
+            puckX = puckX + round(random(15,45))
+          }
+          if (Rock3D < 50){
+             puckX = puckX + round(random(15,45))
+          }
+    
+          fill(95,158,160)
+          ellipse(Rock1X,Rock1Y,50,50)
+          ellipse(Rock2X,Rock2Y,50,50)
+          ellipse(Rock3X,Rock3Y,50,50)
+          Rock3 = false
+        }
+      </pre>
+      <h3 id="fakePucks">Making the Fake Pucks</h3>
+      <p>This can be found on line 274 of Sketch.js</p>
+      <ul>
+        <li><h4>How many pucks</h4></li>
+        <p>This code is what turns on and off each fake puck dpending on how many are 
+          needed. This meathod of turning on and off each one saves alot of lines of code 
+          since each of the 10 pucks moving code is only typed once.
+        </p>
+      </ul>
+      <pre class="prettyprint">
+        if (multiPuckVal == 1){
+
+          fakePuck1 = true
+      
+        }else if (multiPuckVal == 2){
+          
+          fakePuck1 = true
+          fakePuck2 = true
+      
+        }else if (multiPuckVal == 3){
+          
+          fakePuck1 = true
+          fakePuck2 = true
+          fakePuck3 = true
+      
+        }else if (multiPuckVal == 4){
+      
+          fakePuck1 = true
+          fakePuck2 = true
+          fakePuck3 = true
+          fakePuck4 = true
+      
+        }
+      </pre>
+      <ul>
+        <li><h4>Each Pucks Code</h4></li>
+        <p>Each puck has its own version of this code to make it behave like the real puck.
+        </p>
+      </ul>
+      <pre class="prettyprint">
+        if (fakePuck1 == true){
+        fill(0);
+        ellipse(fakePuck1X, fakePuck1Y, 50, 50);
+  
+        if (fakePuck1Y > HitMin && fakePuck1Y < HitMax){
+          fakePuck1X1 = 868
+        }else {
+          fakePuck1X1 = 925;
+        }
+        if(fakePuck1X>fakePuck1X1){
+          fakeChangeDirection1X=true
+        }else if (fakePuck1X<=135){
+          fakeChangeDirection1X=false
+        }
+        if (fakePuck1X>=0 && fakeChangeDirection1X == false){
+          fakePuck1X=fakePuck1X+val+warptimenum
+        }else if(fakeChangeDirection1X == true){
+          fakePuck1X=fakePuck1X-val-warptimenum
+        }
+        if(fakePuck1Y>675){
+          fakeChangeDirection1Y=true
+        }else if (fakePuck1Y<=85){
+          fakeChangeDirection1Y=false
+        }
+        if (fakePuck1Y>=0 && fakeChangeDirection1Y == false){
+          fakePuck1Y=fakePuck1Y+val+warptimenum
+        }else if(fakeChangeDirection1Y == true){
+          fakePuck1Y=fakePuck1Y-val-warptimenum
+        }
+    
+    } </pre>
+       <h3 id="design">Design of the Game</h3>
+       <p>This can be found on line 763 of Sketch.js</p>
+      <ul>
+        <p>In p5 things are givin a X value as distance from the left of the screen
+          and a Y value of distance from the top of the screen. This is how things are positioned
+          that is why it will not be the same size on all devices. In HTML things can be a percentage of the screen, p5 is not like this. 
+          In this code from the pop up after the player missed hiting the puck. 
+        </p>
+      </ul>
+      <pre class="prettyprint">
+      }else if (Start == 2){
+        fill(238,93,72);
+        rect(325,250,350,250)
+        fill(0)
+        textSize(50)
+        textFont(fontBold);
+        text('You Missed!', 355,325)
+        textSize(25)
+        text('You lasted ' + Score + ' seconds', 370, 375)
+        fill(198,204,216);
+        rect(450,400, 120,50)
+        fill(0)
+        textSize(24)
+        text('Try again', 455,430)
+      }
+      </pre>
+      <p>Want to see all of the code to make this game?</p>
+      <a href="https://github.com/waarn/ITBCfinalProject/blob/main/sketch.js">Click Here</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <p>This game and site was created By: William Arnholt</p>
+  </div>
+</footer>
+<script src="js/jquery.min.js"></script> 
+ 
+<script type="text/javascript" src="js/prettify/prettify.js"></script> 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+ <script src="js/jquery.localscroll-1.2.7.js" type="text/javascript"></script>
+ <script src="js/jquery.scrollTo-1.4.3.1.js" type="text/javascript"></script>
+   <script type="text/javascript" src="../../wp-content/themes/piha/js/top-bar-l1.js" ></script>
+  <script type="text/javascript" src="../../wp-content/themes/piha/js/bsa-ads-l1.js" ></script>
+  <!--Dynamically creates analytics markup-->
+  <?php include("http://www.egrappler.com/analytics.php");?>
+</body>
+</html>
