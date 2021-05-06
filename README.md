@@ -2,8 +2,11 @@
 
 This is a version of pong with many different user-configurable challenges.
 
-Explination of the code can be found at: 
+Explanations of the code can be found at: 
 https://waarn.github.io/ITBCfinalProject/docs/docs.html
+
+The game can be found here: 
+https://waarn.github.io/ITBCfinalProject/
 
 ## Jump to a certain section:
 
