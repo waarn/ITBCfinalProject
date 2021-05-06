@@ -39,7 +39,7 @@ Direction changing the puck will randomly change its direction
 
 ## Commom Problems
 
-Code is not working -  Make sure you only write the numbers not the words 'Coce: '
+Code is not working -  Make sure you only write the numbers not the words 'Code: '
 
 The whole game cannot fit on the screen - Use CTRL + or - to zoom in and out
 
