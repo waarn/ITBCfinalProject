@@ -214,16 +214,11 @@ function draw() {
   textSize(16)
   fill(255)
   textFont(fontRegular)
-  text('Check this project out on Github to learn more about it, and instructions on how to play.', 50 , 740)
-  let githubLink = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
-  githubLink.position(710, 725);
   fill(0)
   textSize(20)
   textFont(fontSemiBold)
   text('Direction',985,350)
   text('Changing',985,375)
-  let challengeCode = createA('https://github.com/waarn/ITBCfinalProject', 'https://github.com/waarn/ITBCfinalProject');
-  challengeCode.position(710, 725);
  
   let val = slider.value();
   let puckDisapearVal = puckDisapear.value();
